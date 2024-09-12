@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-ship',
   standalone: true,
   imports: [],
-  templateUrl: './ship.component.html',
-  styleUrl: './ship.component.css'
+  templateUrl: './ships.component.html',
+  styleUrl: './ships.component.css'
 })
-export class ShipComponent {
+export class ShipsComponent {
 
 }
