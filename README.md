@@ -5,5 +5,5 @@ Desafio de 7 dias de código da Alura utilizando Angular.
 Criação de um site que recebe e exibe as informações da [SWAPI](https://swapi.dev/) - a API do Star Wars.
 
 ## Tecnologias
-- Angular 16
+- Angular 18
 - Material Design 
