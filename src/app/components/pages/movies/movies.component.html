@@ -1,4 +1,8 @@
 <div>
+  <label for="movie_input">Search movie
+    <input type="text" name="movie_input" id="movie_input" [(ngModel)]="searchInput" (change)="searchMovie(searchInput)"/>
+  </label>
+
 
   <table mat-table [dataSource]="dataSource">
 
