@@ -2,23 +2,10 @@
 import { Component, inject } from '@angular/core';
 import {MatTableModule} from '@angular/material/table'
 import { MoviesService } from '../../../services/movies.service';
+import { CommonModule } from '@angular/common';
+import { Movie } from '../../../types/movie';
 
-export type Movie = {
-  title: string
-  episode_id: number
-  opening_crawl: string
-  director: string
-  producer: string
-  release_date: string
-  characters: string[]
-  planets: string[]
-  starships: string[]
-  vehicles: string[]
-  species: string[]
-  created: string
-  edited: string
-  url: string
-}
+
 
 
 
@@ -26,7 +13,7 @@ export type Movie = {
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, CommonModule],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css'
 })
@@ -34,10 +21,16 @@ export type Movie = {
 export class MoviesComponent {
   moviesService : MoviesService = inject(MoviesService)
   dataSource :  Movie[] = []
+  displayedColumns: string [] = ['title', 'director', 'producer', 'release_date']
   constructor() {
-    this.dataSource = this.moviesService.getAllMovies()
+   this.moviesService.getAllMovies().subscribe((res) => {
+    this.dataSource = res.results
+    })
+
+  }
+  formatDate(date: string) {
+    const newDate = new Date(date)
+    return newDate.toLocaleDateString('pt-BR')
   }
 
-
-displayedColumns: string [] = ['title', 'director', 'release_date']
 }
