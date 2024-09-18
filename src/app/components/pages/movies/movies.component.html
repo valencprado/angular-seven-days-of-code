@@ -1,9 +1,16 @@
 <div>
-  <label for="movie_input">Search movie
-    <input type="text" name="movie_input" id="movie_input" [(ngModel)]="searchInput" (change)="searchMovie(searchInput)"/>
-  </label>
+  <form (submit)="searchMovie()">
+    <mat-form-field>
+      <label>Search movie
+        <input type="text" name="movie_input" id="movie_input" matInput [(ngModel)]="searchInput" />
+      </label>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Buscar</button>
+  </form>
 
 
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="title">
@@ -26,4 +33,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
+  </div>
 </div>

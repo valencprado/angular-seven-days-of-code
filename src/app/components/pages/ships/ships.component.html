@@ -1,1 +1,37 @@
-<p>Nave</p>
+<div>
+  <form (submit)="searchShip()">
+    <mat-form-field>
+      <label>Search spaceship
+        <input type="text" name="ship_search_input" matInput id="ship_search_input" [(ngModel)]="searchInput" />
+      </label>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Buscar</button>
+  </form>
+
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading">
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef>Modelo</th>
+      <td mat-cell *matCellDef="let element">{{element.model}}</td>
+    </ng-container>
+    <ng-container matColumnDef="manufacturer">
+      <th mat-header-cell *matHeaderCellDef>Manufaturador</th>
+      <td mat-cell *matCellDef="let element">{{element.manufacturer}}</td>
+    </ng-container>
+    <ng-container matColumnDef="cargo_capacity">
+      <th mat-header-cell *matHeaderCellDef>Capacidade</th>
+      <td mat-cell *matCellDef="let element">{{element.cargo_capacity}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
+</div>
