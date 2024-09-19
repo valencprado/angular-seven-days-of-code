@@ -20,8 +20,8 @@ url: string = 'https://swapi.dev/api/'
     return this.http.get<MoviesApiReturn>(`${this.url}/films?search=${search}`)
   }
 
-  getAllShips(): Observable<ShipsApiReturn>{
-    return this.http.get<ShipsApiReturn>(`${this.url}/starships`)
+  getAllShips(page: number): Observable<ShipsApiReturn>{
+    return this.http.get<ShipsApiReturn>(`${this.url}/starships?page=${page}`)
   }
 
   searchShips(search: string) : Observable<ShipsApiReturn> {
