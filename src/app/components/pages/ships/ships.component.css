@@ -1,6 +1,7 @@
-table {
-  width: 100%;
+.ship_container {
+  position: relative;
 }
+
 
 tr.example-detail-row {
   height: 0;
